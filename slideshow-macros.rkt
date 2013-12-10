@@ -348,6 +348,7 @@
 
 (define (X-slide #:title [title ""] #:distance [distance 0] . data)
   (play-n
+   ;#:title title
    #:skip-first? #t
    (λ (n1)
       (cc-superimpose
