@@ -1,0 +1,6 @@
+digraph G {
+    rankdir=LR;
+    node[shape=record];
+    compound=true;
+    single [label="",style=filled,fillcolor=green]
+}

@@ -1,0 +1,10 @@
+digraph G {
+    rankdir=LR;
+    node[shape=record];
+    compound=true;
+    start [shape=plaintext, label="Input", style="", rank=1];
+    subjtest [label="Subjectivity\nTest",style=filled,fillcolor=green]
+    poltest [label="Polarity\nTest",style=filled,fillcolor=green]
+    end [shape=plaintext, label="Subjectivity", style="", rank=1];
+    start -> subjtest -> poltest -> end [style=invis]
+}

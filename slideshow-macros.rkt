@@ -68,7 +68,7 @@
          `(0 ,@(map (λ (n) (tt n))
                     (string-split str "\n")))))
 
-(define (dot str #:small [small #f] #:pretty [pretty #t])
+(define (dot str #:small [small #t] #:pretty [pretty #t])
   (if small
       (bitmap (string-append str "-small.png"))
       (if pretty
@@ -345,6 +345,14 @@
                    ['center-h (apply hc-append `(,distance ,left ,x ,right))]
                    ['center-v (apply vc-append `(,distance ,left ,x ,right))]
                    [else      (apply vc-append `(,distance ,x ,@data))]))))))
+
+(define (X-slide #:title [title ""] #:distance [distance 0] . data)
+  (play-n
+   #:skip-first? #t
+   (λ (n1)
+      (cc-superimpose
+       (apply vc-append `(,distance ,@data))
+       (cellophane (colorize (uber-massive-text "X") "red") n1)))))
 
 (define-syntax (picture-slide stx)
   (syntax-case stx ()

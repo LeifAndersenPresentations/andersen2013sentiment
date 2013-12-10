@@ -1,0 +1,66 @@
+digraph G {
+    node[shape=record];
+    compound=true;
+    subgraph cluster_analyzer_1 {
+        label = "Analyzer 1";
+        style = filled;
+        fillcolor = "green";
+        graph [
+               ranksep="0.01 equally",
+               ];
+        {rank=same
+            a1a[label="Idea",style="filled",fillcolor="yellow",height=0.1];
+            a1b[label="Weight",style="filled",fillcolor="yellow",height=0.1];
+        }
+        a1t[label="Training",style=filled,fillcolor=yellow,height=0.1];
+        a1a -> a1b -> a1t [style=invis]
+        a1a -> a1t [style=invis]
+    }
+    subgraph cluster_analyzer_2 {
+        label = "Analyzer 2";
+        style = filled;
+        fillcolor = "green";
+        graph [
+               ranksep="0.01 equally",
+               ];
+        {rank=same
+            a2a[label="Idea",style="filled",fillcolor="yellow",height=0.1];
+            a2b[label="Weight",style="filled",fillcolor="yellow",height=0.1];
+        }
+        a2t[label="Training",style=filled,fillcolor=yellow,height=0.1];
+        a2a -> a2b -> a2t [style=invis]
+        a2a -> a2t [style=invis]
+    }
+    subgraph cluster_analyzer_3 {
+        label = "Analyzer 3";
+        style = filled;
+        fillcolor = "green";
+        graph [
+               ranksep="0.01 equally",
+               ];
+        {rank=same
+            a3a[label="Idea",style="filled",fillcolor="yellow",height=0.1];
+            a3b[label="Weight",style="filled",fillcolor="yellow",height=0.1];
+        }
+        a3t[label="Training",style=filled,fillcolor=yellow,height=0.1];
+        a3a -> a3b -> a3t [style=invis];
+        a3a -> a3t [style=invis]
+    }
+    subgraph cluster_decider {
+        label="Decider";
+        style=filled;
+        fillcolor="blue";
+        t[label="Threshold",style=filled,fillcolor=red];
+    }
+    testing[label="Input",style=filled,fillcolor=gray];
+    p[label="Positive",style=filled,fillcolor=purple];
+    n[label="Negative",style=filled,fillcolor=orange];
+    a1t -> t [lhead=cluster_decider,ltail=cluster_analyzer_1];
+    a2t -> t [lhead=cluster_decider,ltail=cluster_analyzer_2];
+    a3t -> t [lhead=cluster_decider,ltail=cluster_analyzer_3];
+    testing -> a1a[lhead=cluster_analyzer_1];
+    testing -> a2a[lhead=cluster_analyzer_2];
+    testing -> a3a[lhead=cluster_analyzer_3];
+    t -> p[ltail=cluster_decider];
+    t -> n[ltail=cluster_decider];
+}

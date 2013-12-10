@@ -1,5 +1,5 @@
 all:
-#	for i in *.dot; do\
+	for i in *.dot; do\
 		dot -Tsvg $$i > `basename $$i .dot`.svg;\
 		dot -Tps $$i > `basename $$i .dot`.pdf;\
 		dot -Tpdf $$i > `basename $$i .dot`.pdf;\
@@ -10,7 +10,7 @@ all:
 		rsvg-convert -f png -o `basename $$i .dot`-notugly.png `basename $$i .dot`-notugly.svg;\
 		convert -resize 750 `basename $$i .dot`-notugly.png `basename $$i .dot`-small.png;\
 	done
-	racket presentation-name.rkt
+	racket SentimentAnalysis.rkt
 
 dot:
 	for i in *.dot; do\
@@ -26,4 +26,4 @@ dot:
 	done
 
 presentation: dot
-	racket presentation-name.rkt
+	racket SentimentAnalysis.rkt
